@@ -250,8 +250,9 @@ textarea {
   background: #fafafa; }
   .about__content {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-gap: 10rem; }
+    grid-template-columns: 1fr;
+    grid-gap: 10rem;
+    text-align: center; }
     @media only screen and (max-width: 56.25em) {
       .about__content {
         grid-template-columns: 1fr;
@@ -662,8 +663,7 @@ textarea {
         padding: 3.5rem 0; } }
 
 .skills {
-  display: flex;
-  flex-wrap: wrap; }
+  display: flex; }
   .skills__skill {
     padding: 1rem 2rem;
     margin-bottom: 1.5rem;
@@ -747,4 +747,10 @@ textarea {
 
 .project3-background {
   background-image: url('../assets/jpg/energie-rinnovabili-2.jpg'); 
+}
+
+@media (max-width: 767px) {
+  .skills {
+    flex-direction: column;
+  }
 }
