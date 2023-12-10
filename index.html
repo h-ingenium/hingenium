@@ -14,6 +14,15 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap"
     rel="stylesheet" />
+  <link rel="icon" type="image/x-icon" href="/assets/jpg/logo.jpg">
+
+  <!-- Email.JS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script type="text/javascript">
+      (function() {
+          emailjs.init('OHU6E9wrgaZU7SuLY');
+      })();
+  </script>
 </head>
 
 <body>
@@ -128,10 +137,10 @@
       <h2 class="heading heading-sec heading-sec__mb-med">
         <span class="heading-sec__main">Chi Siamo</span>
         <span class="heading-sec__sub">
-          H-Ingenium.it è una realtà creata dai fratelli Huamàn ,in grado di operare su svariate
+          H-Ingenium.it è una realtà creata dai fratelli Huamàn, in grado di operare su svariate
           problematiche fornendo sempre un servizio completo e multidisciplinare di elevato
           livello tecnico sia per l’esperienza e la professionalità. Inoltre, contiamo con
-          personale qualificato e il nostro direttore tecnico e il nostro direttore tecnico è l'ing.
+          personale qualificato e il nostro direttore tecnico è l'ing.
           Hector Enrique Huaman della Provincia di Lodi con matricola 770 e verificabile al link:
           <a href="https://www.ordineingegnerilodi.it/wp-content/uploads/ELENCO-iscritti-2023-Albo-no-morosi.pdf"
             style="color:#0062b9" target="_blank">
@@ -280,25 +289,39 @@
         -->
       </h2>
       <div class="contact__form-container">
-        <form action="#" class="contact__form">
+        <form action="" class="contact__form">
           <div class="contact__form-field">
             <label class="contact__form-label" for="name">Nome</label>
-            <input required placeholder="Name..." type="text" class="contact__form-input" name="name" id="name"
+            <input required placeholder="Nome Cognome" type="text" class="contact__form-input" name="name" id="name"
               onkeyup="validateName()" />
+              <span id="name-error" class="contact__subtitle"></span>
           </div>
           <div class="contact__form-field">
             <label class="contact__form-label" for="email">Email</label>
             <input required placeholder="Email..." type="text" class="contact__form-input" name="email" id="email"
               onkeyup="validateEmail()" />
+              <span id="email-error" class="contact__subtitle"></span>
           </div>
           <div class="contact__form-field">
             <label class="contact__form-label" for="message">Messaggio</label>
             <textarea required cols="30" rows="10" class="contact__form-input" placeholder="Scrivici..." name="message"
               id="message" onkeyup="validateMessage()"></textarea>
+            <span id="message-error" class="contact__subtitle"></span>
           </div>
-          <button type="submit" class="btn btn--theme contact__btn" onclick="return SendMail()">
-            Submit
-          </button>
+          <!--
+          <div>
+            <a onclick="return SendMail()" class="button button--flex">
+              Send Message
+              <i class="uil uil-message button__icon"></i>
+            </a>
+          </div>
+          -->
+          <a onclick="return SendMail()">
+            <div class="btn btn--theme contact__btn">
+              Submit
+            </div>
+          </a>
+
         </form>
       </div>
     </div>
