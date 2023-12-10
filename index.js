@@ -37,72 +37,71 @@ headerLogoConatiner.addEventListener('click', () => {
   location.href = 'index.html'
 })
 
-/*==================== CONTACT FORM VALIDATIONS ====================*/ 
+/*==================== CONTACT FORM VALIDATIONS ====================*/
 var nameError = document.getElementById('name-error');
 var emailError = document.getElementById('email-error');
 var messageError = document.getElementById('message-error');
 
-function validateName(){
-    var name = document.getElementById('name').value;
+function validateName() {
+  var name = document.getElementById('name').value;
 
-    if(name.length == 0){
-        nameError.innerHTML = 'Full name is required!';
-        return false;
-    }
-    if( !name.match(/[a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?/) ){
-        nameError.innerHTML = 'Enter full name!';
-        return false;
-    }
-    nameError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
-    return true;
+  if (name.length == 0) {
+    nameError.innerHTML = 'Nome completo è necessario!';
+    return false;
+  }
+  if (!name.match(/[a-zA-Z]{2,}\s[a-zA-Z]{1,}'?-?[a-zA-Z]{2,}\s?([a-zA-Z]{1,})?/)) {
+    nameError.innerHTML = 'Nome completo (Nome Cognome)!';
+    return false;
+  }
+  nameError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
+  return true;
 }
 
-function validateEmail(){
-    var email = document.getElementById('email').value;
+function validateEmail() {
+  var email = document.getElementById('email').value;
 
-    if(email.length == 0){
-        emailError.innerHTML = 'A valid email address is required!';
-        return false;
-    }
-    // if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
-    if(!email.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)){
-        emailError.innerHTML = 'Invalid email!';
-        return false;
-    }
-    emailError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
-    return true;
+  if (email.length == 0) {
+    emailError.innerHTML = 'Un indirizzo email valido è necessario!';
+    return false;
+  }
+  // if(!email.match(/^[A-Za-z\._\-[0-9]*[@][A-Za-z]*[\.][a-z]{2,4}$/)){
+  if (!email.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+    emailError.innerHTML = 'Email non valido!';
+    return false;
+  }
+  emailError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
+  return true;
 }
 
-function validateMessage(){
-    var message = document.getElementById('message').value;
-    var required = 30;
-    var left = required - message.length;
+function validateMessage() {
+  var message = document.getElementById('message').value;
+  var required = 30;
+  var left = required - message.length;
 
-    if (left>0){
-        messageError.innerHTML = left + ' more characters are required!';
-        return false;
-    }
-    messageError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
-    return true;
+  if (left > 0) {
+    messageError.innerHTML = left + ' più lettere sono neccessarie!';
+    return false;
+  }
+  messageError.innerHTML = '<i class="uil uil-check-circle projects__modal-icon"></i>';
+  return true;
 }
 
-/*==================== EMAIL SERVICE ====================*/ 
-function SendMail(){
+/*==================== EMAIL SERVICE ====================*/
+function SendMail() {
 
-  if(!validateName() || !validateEmail() || !validateMessage() ){
-      // alert("Please fix the errors to send a message!");
-      swal("Sorry!", "Please fix the errors to send a message!", "warning");
-      return false;
+  if (!validateName() || !validateEmail() || !validateMessage()) {
+    alert("Please fix the errors to send a message!");
+    //swal("Sorry!", "Please fix the errors to send a message!", "warning");
+    return false;
   }
 
   var params = {
-      from_name : document.getElementById("name").value,
-      email_id : document.getElementById("email").value,
-      message : document.getElementById("message").value
+    from_name: document.getElementById("name").value,
+    email_id: document.getElementById("email").value,
+    message: document.getElementById("message").value
   }
-  emailjs.send("service_4ajtfo5", "template_ryff15a", params).then(function (res){
-      // alert("Success! " + res.status);
-      // alert("Your message has been sent successfully!");
-      swal("Success!", "Your message has been sent!", "success");
+  emailjs.send("service_0w4wiju", "template_7ji85ng", params).then(function (res) {
+    // alert("Success! " + res.status);
+    alert("Your message has been sent successfully!");
   })
 }
